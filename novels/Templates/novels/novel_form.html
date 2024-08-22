@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% if form.instance.pk %}Edit Novel{% else %}Add New Novel{% endif %}
+    </title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f8f9fa 25%, #e9ecef 100%);
+        color: #343a40;
+      }
+      .container {
+        max-width: 600px;
+        margin-top: 50px;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #007bff;
+        text-align: center;
+      }
+      form {
+        padding: 20px;
+        border-radius: 10px;
+        background: #f7f7f7;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #495057;
+      }
+      .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+      button[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        background: linear-gradient(135deg, #007bff 25%, #0056b3 100%);
+        border: none;
+        color: #ffffff;
+        transition: background 0.3s ease-in-out;
+      }
+      button[type="submit"]:hover {
+        background: linear-gradient(135deg, #0056b3 25%, #004080 100%);
+      }
+      .btn-secondary {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding: 12px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        color: #6c757d;
+        background-color: #e9ecef;
+      }
+      .btn-secondary:hover {
+        background-color: #ced4da;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        {% if form.instance.pk %}Edit Novel{% else %}Add New Novel{% endif %}
+      </h1>
+
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'novel_list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </body>
+</html>

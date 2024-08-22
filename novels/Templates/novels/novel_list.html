@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novel Collection</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #e9ecef 25%, #dee2e6 100%);
+        color: #343a40;
+      }
+      .container {
+        max-width: 800px;
+        margin-top: 50px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #007bff;
+        text-align: center;
+      }
+      a.add-new {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        color: #ffffff;
+        background: #28a745;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s ease-in-out;
+      }
+      a.add-new:hover {
+        background: #218838;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      li a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      li a:hover {
+        text-decoration: underline;
+      }
+      li span {
+        margin-right: 10px;
+        color: #6c757d;
+      }
+      li .actions a {
+        color: #ffffff;
+        margin-left: 10px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: 0.9rem;
+      }
+      li .actions a.edit {
+        background: #ffc107;
+      }
+      li .actions a.delete {
+        background: #dc3545;
+      }
+      li .actions a.edit:hover {
+        background: #e0a800;
+      }
+      li .actions a.delete:hover {
+        background: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Novel Collection</h1>
+      <a href="{% url 'novel_create' %}" class="add-new">Add New Novel</a>
+      <ul>
+        {% for novel in novels %}
+        <li>
+          <div>
+            <a href="{% url 'novel_detail' novel.pk %}">{{ novel.title }}</a>
+            <span>by {{ novel.author }}</span>
+          </div>
+          <div class="actions">
+            <a href="{% url 'novel_edit' novel.pk %}" class="edit">Edit</a>
+            <a href="{% url 'novel_delete' novel.pk %}" class="delete"
+              >Delete</a
+            >
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
