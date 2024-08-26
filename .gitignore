@@ -1,10 +1,25 @@
-# Ignore the virtual environment directory
+# Virtual environment
 venv/
 
-# Ignore SQLite database files
-*.sqlite3
+.vercel/
 
-# Ignore Python cache files
+# Python bytecode files
 __pycache__/
 *.pyc
-.vercel
+*.pyo
+
+# Django-specific
+*.log
+*.sqlite3
+
+# Environment variables
+.env
+
+# Nixpacks
+.nixpacks.json
+
+# Deployment files
+Dockerfile
+Procfile
+vercel.json
+runtime.exe
